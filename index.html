@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Owen's Button</title>
+        <link rel="icon" type="image/x-icon" href="res/owen.ico">
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: rgb(24, 26, 27);
+                color: white;
+            }
+            nav {
+                background-image: url("res/bg.png");
+                margin: 0;
+                padding: 0;
+            }
+            nav ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+            nav ul li {
+                float: left;
+                padding: 5px 5px;
+                margin: 0;
+            }
+            nav img {
+                padding: 0;
+                margin: 0;
+            }
+            .links {
+                margin: 11px;
+                padding: 0px 0px;
+            }
+            .button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="index.html"><img src="res/owen.png" alt="Owen's Button.xyz" draggable="false" oncontextmenu="false"></a></li>
+            </ul>
+        </nav>
+
+        <div class="button">
+            <h1><center>OWEN'S BUTTON:</center></h1>
+            <img src = res/button.png id="button"
+                onmouseover="this.src='res/button_hover.png'"
+                onmousedown="this.src='res/button_click.png'"
+                onmouseup="this.src='res/button.png'"
+                onmouseleave="this.src='res/button.png'">
+        </div>
+        <script type="text/javascript">
+            window.onload = function() {
+                document.getElementById("button").onclick = function() {
+                    var audio = new Audio("res/off.mp3");
+                    audio.play();
+                }
+            }
+        </script>
+    </body>
+</html>
