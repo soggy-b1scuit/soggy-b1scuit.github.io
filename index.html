@@ -39,6 +39,14 @@
                 justify-content: center;
                 align-items: center;
             }
+            .center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .chair {
+                visibility: hidden;
+            }
         </style>
     </head>
     <body>
@@ -55,12 +63,35 @@
                 onmousedown="this.src='res/button_click.png'"
                 onmouseup="this.src='res/button.png'"
                 onmouseleave="this.src='res/button.png'">
+            <input type="range" id="volume-thing">
+        </div>
+        <div class="center">
+            <img src = "res/chair.gif" id="chair" class="chair">
         </div>
         <script type="text/javascript">
             window.onload = function() {
-                document.getElementById("button").onclick = function() {
-                    var audio = new Audio("res/off.mp3");
-                    audio.play();
+                var music = new Audio("res/cant_take_it.mp3");
+                music.loop = true;
+                var music_on = false;
+                var chair = document.getElementById("chair");
+                let volume = document.getElementById("volume-thing");
+                volume.addEventListener("change", function(e) { music.volume = e.currentTarget.value / 100; })
+                document.getElementById("button").onclick = function() { //owen music function
+                    music.volume = volume.value / 100;
+                    music_on = !music_on;
+                    if (music_on)
+                    {
+                        music.play();
+                        chair.style.visibility = "visible";
+                    }
+                    else
+                    {
+                        music.pause();
+                        chair.style.visibility = "hidden";                
+                    }
+                    var sound = new Audio("res/voice-message(3).wav");
+                    sound.volume = volume.value / 100;
+                    sound.play();
                 }
             }
         </script>
